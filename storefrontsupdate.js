@@ -58,7 +58,7 @@ export const updatestorefront =async () => {
             let new_asins = getArrayDifference(old_asins, current_asins)
             console.log(new_asins)
             if (new_asins.length > 0) {
-                await addASINsToStorefront(storefront.storefrontId, new_asins)
+                await addASINsToStorefront(storefront.storefrontId, current_asins)
                 const users = await User.find({ storefrontIds: storefront.storefrontId });
                 for (const user of users) {
                     const dm = await client.users.fetch(user.userId);

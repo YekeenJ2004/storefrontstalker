@@ -41,13 +41,13 @@ export const getArrayDifference = (array1, array2) =>{
         return(array1)
     }
     // Find items in array1 that aren't in array2
-    const uniqueToFirstArray = array1.filter(item => !array2.includes(item));
+    //const uniqueToFirstArray = array1.filter(item => !array2.includes(item));
     
     // Find items in array2 that aren't in array1
     const uniqueToSecondArray = array2.filter(item => !array1.includes(item));
     
     // Combine the differences
-    return [...uniqueToFirstArray, ...uniqueToSecondArray];
+    return [...uniqueToSecondArray];
 }
 
 export async function sendEmbedToUser(client, userId, ASINs,sellerName) {

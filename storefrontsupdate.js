@@ -15,7 +15,8 @@ async function getSellerProducts(sellerId, domain = 2) {
         
         if (response.status === 200) {
             console.log("Successfully retrieved details from Keepa");
-            const res = response.data;
+            const js = response.json()
+            const res = js.data;
             const sellers = res.sellers;
             const sellerData = sellers[sellerId];
 
@@ -52,9 +53,9 @@ export const updatestorefront =async () => {
         }
         x= x+1
         try {
-            const response = await getSellerProducts(storefront.storefrontId, 2) // Hypothetical Keepa API call
-            const current_asins  = response.ASINS
-            let old_asins = storefront.asins
+            const response = await getSellerProducts(storefront.storefrontId, 2) 
+            const current_asins  = await response.ASINS
+            let old_asins =  storefront.asins
             let new_asins = await getArrayDifference(old_asins, current_asins)
             console.log(new_asins)
             if (new_asins.length > 0) {

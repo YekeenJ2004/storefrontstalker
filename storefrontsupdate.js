@@ -55,7 +55,7 @@ export const updatestorefront =async () => {
             const response = await getSellerProducts(storefront.storefrontId, 2) // Hypothetical Keepa API call
             const current_asins  = response.ASINS
             let old_asins = storefront.asins
-            let new_asins = getArrayDifference(old_asins, current_asins)
+            let new_asins = await getArrayDifference(old_asins, current_asins)
             console.log(new_asins)
             if (new_asins.length > 0) {
                 await addASINsToStorefront(storefront.storefrontId, current_asins)
